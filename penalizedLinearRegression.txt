@@ -1,0 +1,4 @@
+"Penalized linear regression provides a way to systematically reduce
+degrees of freedom to match the amount of data available and the
+complexity of the underlying problem."
+  -Michael Bowles, Machine Learning In Python
