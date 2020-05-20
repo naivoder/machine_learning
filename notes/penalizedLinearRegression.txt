@@ -8,3 +8,5 @@ Penalized linear regression models train much more quickly than ensemble methods
 development life cycle to provide insight into valuable features of the data set and a baseline comparison for other
 algorithms that might be experimented with later on in the process. PLR methods also generate predictions much faster
 than ensemble methods which is a significant benefit for highly time sensitive procedures (like Internet ad insertions)
+
+Only handles numeric attributes and labels, categorical attributes and labels must be converted into numbers.
