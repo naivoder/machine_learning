@@ -1,0 +1,8 @@
+"Feature extraction is the process of taking data from a free-form arrangement,
+such as words in a document or on a web page, and arranging them into rows and
+columns of numbers... Feature engineering is the process of manipulating and
+combining features to arrive at more informative ones."
+-Michael Bowles, Machine Learning In Python
+
+Data preparation and feature engineering is estimated to take 80-90% of
+time required to develop a machine learning model.

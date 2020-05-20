@@ -1,0 +1,12 @@
+"Penalized linear regression provides a way to systematically reduce
+degrees of freedom to match the amount of data available and the
+complexity of the underlying problem."
+-Michael Bowles, Machine Learning In Python
+
+Excellent algorithm for problems with very many degrees of freedom, like gene sequence predictions and text classification.
+Penalized linear regression models train much more quickly than ensemble methods, and are often useful early in the
+development life cycle to provide insight into valuable features of the data set and a baseline comparison for other
+algorithms that might be experimented with later on in the process. PLR methods also generate predictions much faster
+than ensemble methods which is a significant benefit for highly time sensitive procedures (like Internet ad insertions)
+
+Only handles numeric attributes and labels, categorical attributes and labels must be converted into numbers.

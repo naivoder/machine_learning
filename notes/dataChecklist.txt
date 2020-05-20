@@ -1,0 +1,11 @@
+Basic Items to check:
+---------------------
+1) number of rows and columns
+   - size and shape of the data
+   - read into list of list -> dim(outer) = rows, dim(inner) = cols
+2) number of categorical variables
+   a) number of unique values for each
+3) Missing values
+   - might throw out incomplete instances
+   - fill in data via 'imputation' like average values
+4) Summary statistics for attributes and labels
