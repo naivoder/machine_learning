@@ -1,0 +1,8 @@
+"The basic idea with ensemble methods is to build a horde of different predictive models
+and then combine their outputs - by averaging the outputs or taking the majority answer."
+- Michael Bowles, Machine Learning In Python
+
+Many machine learning problems demonstrate instability, in which the addition of new data
+causes radical changes to the model or its resulting performance. Ensemble methods are
+used as a tool to help reduce the variance by generating a large number of independent
+models all derived from the same "base learner".
