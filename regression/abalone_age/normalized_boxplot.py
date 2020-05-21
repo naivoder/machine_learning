@@ -1,3 +1,8 @@
+"""
+this file uses pandas to create a box and whiskers plot of the attribute data in a given dataset. the second plot removes the final attribute, which has a much different scale than the other attributes. the final plot normalizes all the attribute values.
+
+"""
+
 from pylab import *
 import pandas as pd
 import matplotlib.pyplot as plt
