@@ -1,5 +1,6 @@
 """
 this file uses pandas to create a box and whiskers plot of the attribute data in a given dataset. the second plot removes the final attribute, which has a much different scale than the other attributes. the final plot normalizes all the attribute values.
+the normalized boxplot shows max and min values widely spearated from the bulk of the data.
 
 """
 
