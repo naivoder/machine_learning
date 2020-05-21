@@ -1,5 +1,7 @@
 """
 this file uses pandas to create a parallel coordinates plot for the abalone regression problem assigning different color shades to higher and lower target values. the second plot normalizes the data. this plot can take a little while to render...
+this plot indicates significant correlation between each of the available measurable attributes and abalone age (number of rings). since similar shades are largely grouped together at similar values an accurate predictive model should be possible.
+the areas of overlap indicate examples that will be difficult to predict correlectly from any single attribute. 
 
 """
 import math
@@ -17,6 +19,7 @@ number_of_rows = len(dataset.index)
 
 for i in range(number_of_rows):
     record = dataset.iloc[i, 1:8]
+    # increment of datapoint from baseline, as % of total range
     label_color = (dataset.iloc[i, 8] - min_rings) / (max_rings - min_rings)
     record.plot(color=plt.cm.RdYlBu(label_color), alpha=0.5)
 
