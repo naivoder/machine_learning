@@ -1,6 +1,6 @@
 """
 this file uses pandas to give a summary of the attributes, their types, their value ranges and their general placement within the data structure
-the summary shows 1599 records with 11 attributes and a numeric label corresponding to quality
+the summary shows 214 records with 10 attributes and a numeric label corresponding to quality. the data appears to be separated distinctly by type.
 
 """
 import pandas as pd
