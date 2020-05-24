@@ -35,7 +35,7 @@ def confusion_matrix(predicted, actual, threshold, debug=False):
                 tn += 1.0
     return [tp, fn, fp, tn]
 
-# split labels into separate lists
+# split labels, attributes into separate lists
 attributes = []; labels = []
 for row in dataset:
     record = row.strip().decode().split(',')
@@ -61,26 +61,62 @@ labels_train = [labels[i] for i in range(len(labels)) if (i % 3 != 0)]
 x_train = np.array(attribute_train); y_train = np.array(labels_train)
 x_test = np.array(attribute_test); y_test = np.array(labels_test)
 
+# linear regression model
+rocks_v_mines = linear_model.LinearRegression()
+rocks_v_mines.fit(x_train, y_train)
+
 # confirm that everything is as expected...
 print("--------")
 print("Training")
 print("--------")
 print("Shape of attributes:", x_train.shape)
 print("Shape of labels:", y_train.shape)
+
+# generate prediction error from training data
+training_predictions = rocks_v_mines.predict(x_train)
+print("\nSample predictions:", training_predictions[0:3], training_predictions[-4:-1])
+
+# generate and confusion matrix data (set desired threshold here)
+tp, fn, fp, tn  = confusion_matrix(training_predictions, y_train, 0.5)
+print("TP: %s\tFN: %s\t\tFP: %s\t\tTN: %s" % (tp, fn, fp, tn))
+
+# generate reciever operating characteristic for training data
+fpr, tpr, thresh = roc_curve(y_train, training_predictions)
+roc_auc = auc(fpr, tpr)
+print("AUC for Training ROC curve: %.3f" % roc_auc)
+pl.plot(fpr, tpr, label="ROC curve (area = %.3f)" % roc_auc)
+pl.plot([0, 1], [0, 1], 'k-')
+pl.xlim([0.0, 1.0]); pl.ylim([0.0, 1.0])
+pl.xlabel("FP Rate")
+pl.ylabel("TP Rate")
+pl.title("Training Data ROC")
+pl.legend()
+pl.show()
+
+# confirm that everything is as expected...
 print("-------")
 print("Testing")
 print("-------")
 print("Shape of attributes:", x_test.shape)
 print("Shape of labels:", y_test.shape)
 
-# linear regression model
-rocks_v_mines = linear_model.LinearRegression()
-rocks_v_mines.fit(x_train, y_train)
+# generate prediction error from test data
+test_predictions = rocks_v_mines.predict(x_test)
+print("\nSample predictions:", test_predictions[0:3], test_predictions[-4:-1])
 
-# generate error predictions
-training_predictions = rocks_v_mines.predict(x_train)
-print("Sample predictions:", training_predictions[0:3], training_predictions[-4:-1])
-
-# generate and display confusion matrix data (set desired threshold here)
-tp, fn, fp, tn  = confusion_matrix(training_predictions, y_train, 0.5)
+# generate and confusion matrix data (set desired threshold here)
+tp, fn, fp, tn  = confusion_matrix(test_predictions, y_test, 0.5)
 print("TP: %s\tFN: %s\t\tFP: %s\t\tTN: %s" % (tp, fn, fp, tn))
+
+# generate reciever operating characteristic for test data
+fpr, tpr, thresh = roc_curve(y_test, test_predictions)
+roc_auc = auc(fpr, tpr)
+print("AUC for Testing ROC curve: %.3f" % roc_auc)
+pl.plot(fpr, tpr, label="ROC curve (area = %.3f)" % roc_auc)
+pl.plot([0, 1], [0, 1], 'k-')
+pl.xlim([0.0, 1.0]); pl.ylim([0.0, 1.0])
+pl.xlabel("FP Rate")
+pl.ylabel("TP Rate")
+pl.title("Testing Data ROC")
+pl.legend()
+pl.show()
