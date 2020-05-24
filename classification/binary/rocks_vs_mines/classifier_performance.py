@@ -1,3 +1,12 @@
+"""
+this file uses the scikit-lean linear regression class to train an ordinary 'least squares' model
+the dataset is first split into training and test sets, and converted to numpy arrays for performance
+the trained model is used to make predictions on the training and test datasets respectively
+confusion matrices and ROC/AUC plots are generated to provide a visualization of the model's performance
+
+"""
+
+
 from urllib.request import urlopen
 import numpy as np
 from sklearn import datasets, linear_model
@@ -81,9 +90,10 @@ tp, fn, fp, tn  = confusion_matrix(training_predictions, y_train, 0.5)
 print("TP: %s\tFN: %s\t\tFP: %s\t\tTN: %s" % (tp, fn, fp, tn))
 
 # generate reciever operating characteristic for training data
+# true positive rate, false positive rate
 fpr, tpr, thresh = roc_curve(y_train, training_predictions)
 roc_auc = auc(fpr, tpr)
-print("AUC for Training ROC curve: %.3f" % roc_auc)
+print("AUC for Training ROC curve: %.3f\n" % roc_auc)
 pl.plot(fpr, tpr, label="ROC curve (area = %.3f)" % roc_auc)
 pl.plot([0, 1], [0, 1], 'k-')
 pl.xlim([0.0, 1.0]); pl.ylim([0.0, 1.0])
@@ -105,6 +115,8 @@ test_predictions = rocks_v_mines.predict(x_test)
 print("\nSample predictions:", test_predictions[0:3], test_predictions[-4:-1])
 
 # generate and confusion matrix data (set desired threshold here)
+# true positive rate, false positive rate
+# tpr = tp/(tp+fn)    fpr = fp/(tn+fp)
 tp, fn, fp, tn  = confusion_matrix(test_predictions, y_test, 0.5)
 print("TP: %s\tFN: %s\t\tFP: %s\t\tTN: %s" % (tp, fn, fp, tn))
 
