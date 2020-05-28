@@ -177,8 +177,8 @@ total = 0
 with torch.no_grad():
     for data in test_loader:
         # get inputs and labels
-        inputs, labels = inputs, labels = data[0].to(device), data[1].to(device)
-        output = net()
+        images, labels = data[0].to(device), data[1].to(device)
+        output = net(images)
         # why output.data here, but not 159?
         stuff, prediction = torch.max(output.data, 1)
         total += labels.size(0)
@@ -193,7 +193,7 @@ class_total = [0. for i in range(10)]
 with torch.no_grad():
     for data in test_loader:
         # get inputs and labels
-        inputs, labels = data[0].to(device), data[1].to(device)
+        images, labels = data[0].to(device), data[1].to(device)
         output = net(images)
         stuff, prediction = torch.max(output, 1)
         # same handy trick but this time with squeeze...
