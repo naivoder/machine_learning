@@ -44,6 +44,12 @@ I highly recommend all of these books.
 
 ###### *This command sets up network instructions, creates a local directory to keep saved notebook data, builds the container and saves it as "tf" on the host machine.*
 
+##### Escape to Host terminal
+
+`ctrl pq`
+
+###### *-it flags specify an interactive terminal session*
+
 ##### Stop Docker container:
 
 `docker container stop tf`
