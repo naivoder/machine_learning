@@ -5,10 +5,8 @@ data/
 
 __pycache__/
 *.py[cod]
-*.ipynb
 .ipynb_checkpoints/
 
-notebooks/
 datasets/
 
 # C extensions
