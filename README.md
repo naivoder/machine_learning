@@ -10,7 +10,11 @@ Inspriation for the code in this repository comes from many places, including bu
 
 I highly recommend all of these books.
 
-### Jupyter notebook with Tensorflow Docker container 
+### Practice notebooks
+
+I have included template notebooks for various machine learning projects with code blocks omitted, along with the fully functional versions for comparison. I find these very useful for practicing frameworks, and committing various techniques to memory. 
+
+### Jupyter notebook with Tensorflow via Docker container 
 ##### Requirements:
 ###### 1) Nvidia GPU and up-to-date driver installed
 
