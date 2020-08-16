@@ -1,6 +1,0 @@
-import os
-
-for file in os.walk('.'):
-	if file
-.endswith('.pynb'):
-		print('got one')
